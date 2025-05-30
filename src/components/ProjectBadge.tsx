@@ -42,7 +42,7 @@ const ProjectBadge: React.FC<ProjectBadgeProps> = ({
       <img
         src={tsuchinoko}
         alt="Tsuchinoko mascot"
-        className="w-16 h-16 mb-2"
+        className="w-16 h-16"
       />
       <h2 className="text-lg font-bold text-base-content text-center">
         {title}

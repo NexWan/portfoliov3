@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { useThemeStore } from "../stores/themeStore";
@@ -25,30 +24,66 @@ function Navbar() {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-                <NavLink to="/" className="text-base">
-                    Home
-                </NavLink>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `text-base px-3 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-base-200 text-content"
+                  }`
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-                <NavLink to="/projects" className="text-base">
-                    Projects
-                </NavLink>
+              <NavLink
+                to="projects"
+                className={({ isActive }) =>
+                  `text-base px-3 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-base-200 text-content"
+                  }`
+                }
+              >
+                Projects
+              </NavLink>
             </li>
             <li>
-                <NavLink to="/experience" className="text-base">
-                    Experience
-                </NavLink>
+              <NavLink
+                to="experience"
+                className={({ isActive }) =>
+                  `text-base px-3 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-base-200 text-content"
+                  }`
+                }
+              >
+                Experience
+              </NavLink>
             </li>
             <li>
-                <NavLink to="/skills" className="text-base">
-                    Skills
-                </NavLink>
+              <NavLink
+                to="skills"
+                className={({ isActive }) =>
+                  `text-base px-3 py-2 rounded-md transition-colors ${
+                    isActive
+                      ? "bg-primary text-white"
+                      : "hover:bg-base-200 text-content"
+                  }`
+                }
+              >
+                Skills
+              </NavLink>
             </li>
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl">
           <img
-            src="/tsuchinokobg.png"
+            src={theme === "valentine" ? "/tsuchinokobg.png" : "/tsuchinoko_dark.png"}
             alt="Tsuchinoko Logo"
             className="h-10 w-10 rounded-full inline-block mr-2"
           />
@@ -56,27 +91,63 @@ function Navbar() {
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-            <li>
-                <NavLink to="/" className="text-base">
-                Home
-                </NavLink>
-            </li>
-            <li>
-                <NavLink to="/projects" className="text-base">
-                Projects
-                </NavLink>
-            </li>
-            <li>
-                <NavLink to="/experience" className="text-base">
-                Experience
-                </NavLink>
-            </li>
-            <li>
-                <NavLink to="/skills" className="text-base">
-                Skills
-                </NavLink>
-            </li>
+        <ul className={`menu menu-horizontal px-1`}>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `text-base px-3 py-2 rounded-md transition-colors ${
+                  isActive
+                    ? "bg-primary text-white"
+                    : "hover:bg-base-200 text-content"
+                }`
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="projects"
+              className={({ isActive }) =>
+                `text-base px-3 py-2 rounded-md transition-colors ${
+                  isActive
+                    ? "bg-primary text-white"
+                    : "hover:bg-base-200 text-content"
+                }`
+              }
+            >
+              Projects
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="experience"
+              className={({ isActive }) =>
+                `text-base px-3 py-2 rounded-md transition-colors ${
+                  isActive
+                    ? "bg-primary text-white"
+                    : "hover:bg-base-200 text-content"
+                }`
+              }
+            >
+              Experience
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="skills"
+              className={({ isActive }) =>
+                `text-base px-3 py-2 rounded-md transition-colors ${
+                  isActive
+                    ? "bg-primary text-white"
+                    : "hover:bg-base-200 text-content"
+                }`
+              }
+            >
+              Skills
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className="navbar-end">

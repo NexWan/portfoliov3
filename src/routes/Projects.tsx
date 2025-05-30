@@ -1,173 +1,216 @@
 import ProjectBadge from "../components/ProjectBadge";
 import { useState } from "react";
+import { GithubOutlined } from "@ant-design/icons";
+import { useThemeStore } from "../stores/themeStore";
 
 function Projects() {
-    const projects = [
-        {
-            title: "Portfolio Website",
-            description: "A personal portfolio website to showcase my projects and skills.",
-            link: "https://nexwan.com",
-            image: "/images/portfolio.png",
-            Techs: ["TypeScript", "React", "Tailwind CSS", "DaisyUI", "Vite"],
-            status: "In Development",
-            category: ["Web"]
-        }, 
-        {
-            title: "Marketplace Website",
-            description: "A marketplace type website made for a school project. It uses Machine Learning to predict the tag of the products based on the image.",
-            link: "link-to-marketplace.com",
-            image: "/images/marketplace.png",
-            Techs: ["TypeScript", "React", "Tailwind CSS", "Vite"],
-            status: "Completed",
-            category: ["Web", "AI"]
-        },
-        {
-            title: "School Chapter Website",
-            description: "A website for a school chapter, built with React and Node.js.",
-            link: "https://schoolchapter.com",
-            image: "/images/school-chapter.png",
-            Techs: ["TypeScript", "React", "Node.js"],
-            status: "Completed",
-            category: ["Web"]
-        },
-        {
-            title: "PostgreSQL Zig Wrapper",
-            description: "A wrapper for PostgreSQL written in Zig, providing a simple interface for database operations.",
-            link: "link-to-zig-wrapper.com",
-            image: "/images/zig-wrapper.png",
-            Techs: ["Zig", "C"],
-            status: "In Development",
-            category: ["Tools"]
-        },
-        {
-            title: "Zig Static Server",
-            description: "A static file server written in Zig, designed for high performance and low resource usage.",
-            link: "link-to-zig-server.com",
-            image: "/images/zig-server.png",
-            Techs: ["Zig"],
-            status: "In Development",
-            category: ["Tools"]
-        },
-        {
-            title: "Birth Certificate Manager",
-            description: "A desktop application for managing birth certificates, built with C#, .NET and WPF.",
-            link: "link-to-birth-certificate-manager.com",
-            image: "/images/birth-certificate-manager.png",
-            Techs: ["C#", ".NET", "WPF"],
-            status: "Completed",
-            category: ["Desktop"]
-        },
-        {
-            title: "SpotiPlaying SVG",
-            description: "A simple SVG generator for Spotify playing status, built with TypeScript and React.",
-            link: "link-to-spotiplaying.com",
-            image: "/images/spotiplaying.png",
-            status: "Completed",
-            Techs: ["TypeScript", "React"],
-            category: ["Web"]
-        },
-        {
-            title: "MindScrap",
-            description: "A CLI tool for scraping and creating schedules from mindbox, built with Python.",
-            link: "link-to-mindscrap.com",
-            image: "/images/mindscrap.png",
-            Techs: ["Python", "CLI", "BeautifulSoup"],
-            status: "Completed",
-            category: ["Tools"]
-        }, 
-        {
-            title: "Chase a Rooster",
-            description: "A simple game made with Unity, where you chase a rooster around maps and catch them.",
-            link: "link-to-chase-a-rooster.com",
-            image: "/images/chase-a-rooster.png",
-            Techs: ["C#", "Unity"],
-            status: "Completed",
-            category: ["Game"]
-        }, 
-        {
-            title: "Manos que hablan",
-            description: "A mobile application for learning sign language, built with React Native for a Hackaton.",
-            link: "link-to-manos-que-hablan.com",
-            image: "/images/manos-que-hablan.png",
-            Techs: ["TypeScript", "React Native"],
-            status: "Completed",
-            category: ["Mobile"]
-        },
-        {
-            title: "Oye Volvo!",
-            description: "A mobile application created to mimic a truck dashboard, built with React Native for a Hackaton.",
-            link: "link-to-oye-volvo.com",
-            image: "/images/oye-volvo.png",
-            Techs: ["TypeScript", "React Native"],
-            status: "Completed",
-            category: ["Mobile"]
-        },
-        {
-            title: "IoT Smart Container",
-            description: "An IoT project that monitors the status of a container, built with ESP and Oracle Cloud for a Hackaton.",
-            link: "link-to-iot-smart-container.com",
-            image: "/images/iot-smart-container.png",
-            Techs: ["Rust", "ESP", "Oracle Cloud"],
-            status: "Completed",
-            category: ["Other"]
-        }
-    ]
-    
-    const [selectedCategory, setSelectedCategory] = useState("All");
+  const projects = [
+    {
+      title: "Portfolio Website",
+      description:
+        "A personal portfolio website to showcase my projects and skills.",
+      link: "https://nexwan.com",
 
-    return (
-        <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
-            <h1 className="text-4xl text-primary font-bold mb-4 self-start">Projects</h1>
-            <p className="text-lg"> 
-                I've had the opportunity to work on several personal projects! Is something I 
-                personally enjoy doing, as it allows me to explore new technologies and keep improving my skills and tech stack.
-            </p>
-            <div className="mt-8 w-screen bg-secondary">
-                <div className="max-w-6xl 2xl:max-w-7xl mx-auto p-4 flex flex-col items-center justify-center overflow-y-scroll">
-                    <div className="tabs">
-                        {["All", "Web", "Mobile", "Desktop", "Game", "Tools", "AI", "Other"].map((category) => (
-                            <button
-                                key={category}
-                                className="tab tab-bordered tab-active text-secondary-content"
-                                onClick={() => setSelectedCategory(category)}
-                                >   
-                                {category}
-                            </button>    
-                        ))
-                        }
+      Techs: ["TypeScript", "React", "Tailwind CSS", "DaisyUI", "Vite"],
+      status: "In Development",
+      category: ["Web"],
+    },
+    {
+      title: "Marketplace Website",
+      description:
+        "A marketplace type website made for a school project. It uses Machine Learning to predict the tag of the products based on the image.",
+      link: "https://github.com/NexWan/Marketplace-Front",
+
+      Techs: ["TypeScript", "React", "Tailwind CSS", "Vite"],
+      status: "Completed",
+      category: ["Web", "AI"],
+    },
+    {
+      title: "Marketplace Backend",
+      description:
+        "The backend for the marketplace website, built with Python, FastAPI and AI Tools.",
+      link: "https://github.com/NexWan/Marketplace-Back",
+
+      Techs: ["Python", "FastAPI", "AI Tools"],
+      status: "Completed",
+      category: ["Web", "AI", "Tools"],
+    },
+    {
+      title: "School Chapter Website",
+      description:
+        "A website for a school chapter, built with React and Node.js.",
+      link: "https://github.com/CapituloSistemasITS/capitulo-sistemas-its",
+      Techs: ["TypeScript", "React", "Node.js"],
+      status: "Completed",
+      category: ["Web"],
+    },
+    {
+      title: "PostgreSQL Zig Wrapper",
+      description:"A wrapper for PostgreSQL written in Zig, providing a simple interface for database operations.",
+      link: "https://github.com/NexWan/zig-postgresql-wrapper",
+      Techs: ["Zig", "C"],
+      status: "In Development",
+      category: ["Tools"],
+    },
+    {
+      title: "Zig Static Server",
+      description:
+        "A static file server written in Zig, designed for high performance and low resource usage.",
+      link: "lhttps://github.com/NexWan/Zig-server-handler",
+      Techs: ["Zig"],
+      status: "In Development",
+      category: ["Tools"],
+    },
+    {
+      title: "Birth Certificate Manager",
+      description:
+        "A desktop application for managing birth certificates, built with C#, .NET and WPF.",
+      link: "https://github.com/NexWan/ProyectoAdminBD",
+      Techs: ["C#", ".NET", "WPF"],
+      status: "Completed",
+      category: ["Desktop"],
+    },
+    {
+      title: "SpotiPlaying SVG",
+      description:
+        "A simple SVG generator for Spotify playing status, built with TypeScript and React.",
+      link: "https://github.com/NexWan/SpotiPlaying",
+      status: "Completed",
+      Techs: ["TypeScript", "React"],
+      category: ["Web"],
+    },
+    {
+      title: "MindScrap",
+      description:"A CLI tool for scraping and creating schedules from mindbox, built with Python.",
+      link: "https://github.com/NexWan/MindScrap",
+      Techs: ["Python", "CLI", "BeautifulSoup"],
+      status: "Completed",
+      category: ["Tools"],
+    },
+    {
+      title: "Chase a Rooster",
+      description:"A simple game made with Unity, where you chase a rooster around maps and catch them.",
+      link: "https://github.com/NexWan/Proyecto-Final-Graficacion",
+      Techs: ["C#", "Unity"],
+      status: "Completed",
+      category: ["Game"],
+    },
+    {
+      title: "Manos que hablan",
+      description:"A mobile application for learning sign language, built with React Native for a Hackaton.",
+      link: "https://github.com/NexWan/senias-mobile",
+      Techs: ["TypeScript", "React Native"],
+      status: "Completed",
+      category: ["Mobile"],
+    },
+    {
+      title: "IoT Smart Container",
+      description:"An IoT project that monitors the status of a container, built with ESP and Oracle Cloud for a Hackaton.",
+      link: "https://github.com/NexWan/iot-container",
+      Techs: ["Rust", "ESP", "Oracle Cloud"],
+      status: "Completed",
+      category: ["Other"],
+    },
+  ];
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const theme = useThemeStore((state) => state.theme);
+
+  return (
+    <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
+      <h1 className="text-4xl text-primary font-bold mb-4 self-start">
+        Projects
+      </h1>
+      <p className="text-lg">
+        I've had the opportunity to work on several personal projects! Is
+        something I personally enjoy doing, as it allows me to explore new
+        technologies and keep improving my skills and tech stack.
+      </p>
+      <div className="mt-8 w-screen bg-secondary">
+        <div className="max-w-6xl 2xl:max-w-7xl mx-auto p-4 flex flex-col items-center justify-center overflow-y-scroll">
+          <div className="tabs">
+            {[
+              "All",
+              "Web",
+              "Mobile",
+              "Desktop",
+              "Game",
+              "Tools",
+              "AI",
+              "Other",
+            ].map((category) => (
+              <button
+                key={category}
+                className={`tab tab-bordered tab-active text-secondary-content ${
+                  selectedCategory === category
+                    ? "tab-active bg-primary text-primary-content rounded-xl"
+                    : "bg-secondary text-secondary-content "}`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+            {projects
+              .filter(
+                (project) =>
+                  selectedCategory === "All" ||
+                  project.category.includes(selectedCategory)
+              )
+              .map((project) => (
+                <div
+                  key={project.title}
+                  className="card bg-base-100 shadow-xl hover:scale-105 transition-transform duration-300 hover:cursor-pointer hover:shadow-2xl"
+                >
+                  <figure className="w-full">
+                    <ProjectBadge
+                      title={project.title}
+                      techs={project.Techs}
+                      tsuchinoko={theme === "night" ? "tsuchinoko_dark.png" : "tsuchinokobg.png"} 
+                    />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">{project.title}</h2>
+                    <p>{project.description}</p>
+                    <div className="card-actions justify-center">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary"
+                      >
+                        <GithubOutlined className="mr-2" />
+                        View Project
+                      </a>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-                        {projects.filter((project) => selectedCategory === "All" || project.category.includes(selectedCategory)).map((project) => (
-                            <div key={project.title} className="card bg-base-100 shadow-xl hover:scale-105 transition-transform duration-300 hover:cursor-pointer hover:shadow-2xl">
-                                <figure className="w-full">
-                                    <ProjectBadge
-                                        title={project.title}
-                                        techs={project.Techs}
-                                        tsuchinoko={"tsuchinokobg.png"} // Assuming tsuchinoko is a static image
-                                    />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title">{project.title}</h2>
-                                    <p>{project.description}</p>
-                                    <div className="card-actions justify-center">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                                            View Project
-                                        </a>
-                                    </div>
-                                    <div className="mt-2">
-                                        <span className={`badge ${project.status == "Completed" ? "badge-success" : "badge-warning"}`}>{project.status}</span>
-                                        {project.Techs.map((tech) => (
-                                            <span key={tech} className="badge badge-primary ml-1 my-1">{tech}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                    <div className="mt-2">
+                      <span
+                        className={`badge ${
+                          project.status == "Completed"
+                            ? "badge-success"
+                            : "badge-warning"
+                        }`}
+                      >
+                        {project.status}
+                      </span>
+                      {project.Techs.map((tech) => (
+                        <span
+                          key={tech}
+                          className="badge badge-primary ml-1 my-1"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
+                  </div>
                 </div>
-            </div>
+              ))}
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default Projects;
