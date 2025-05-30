@@ -1,7 +1,6 @@
 import { Outlet } from "react-router";
 import { BulbOutlined, MoonOutlined, TwitterOutlined, MailOutlined, GithubOutlined, DiscordOutlined, LinkedinOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import MainPage from "./MainPage";
 import { MouseTrail } from "@stichiboi/react-elegant-mouse-trail";
 
 function AppLayout() {
@@ -30,8 +29,7 @@ function AppLayout() {
           </button>
         </div>
       </header>
-      <main className="flex-1 p-4">
-        <MouseTrail strokeColor="#f0f0f0" />
+      <main className="flex-1 w-full h-full">
         <Outlet />
       </main>
       <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10 flex justify-around items-center">

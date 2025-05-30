@@ -13,13 +13,16 @@
     "@ant-design/icons": "^6.0.0",
     "@stichiboi/react-elegant-mouse-trail": "^1.0.1",
     "@tailwindcss/vite": "^4.1.7",
+    "@tsparticles/react": "^3.0.0",
     "ant-design": "^1.0.0",
     "daisyui": "^5.0.38",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1",
-    "react-text-transition": "^3.1.0"
+    "react-text-transition": "^3.1.0",
+    "tsparticles": "^3.8.1",
+    "tsparticles-engine": "^2.12.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
