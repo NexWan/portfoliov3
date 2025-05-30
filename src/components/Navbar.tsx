@@ -26,6 +26,7 @@ function Navbar() {
             <li>
               <NavLink
                 to="/"
+                viewTransition
                 className={({ isActive }) =>
                   `text-base px-3 py-2 rounded-md transition-colors ${
                     isActive
@@ -40,6 +41,7 @@ function Navbar() {
             <li>
               <NavLink
                 to="projects"
+                viewTransition
                 className={({ isActive }) =>
                   `text-base px-3 py-2 rounded-md transition-colors ${
                     isActive
@@ -54,6 +56,7 @@ function Navbar() {
             <li>
               <NavLink
                 to="experience"
+                viewTransition
                 className={({ isActive }) =>
                   `text-base px-3 py-2 rounded-md transition-colors ${
                     isActive
@@ -68,6 +71,7 @@ function Navbar() {
             <li>
               <NavLink
                 to="skills"
+                viewTransition
                 className={({ isActive }) =>
                   `text-base px-3 py-2 rounded-md transition-colors ${
                     isActive
@@ -95,6 +99,7 @@ function Navbar() {
           <li>
             <NavLink
               to="/"
+              viewTransition
               className={({ isActive }) =>
                 `text-base px-3 py-2 rounded-md transition-colors ${
                   isActive
@@ -109,6 +114,7 @@ function Navbar() {
           <li>
             <NavLink
               to="projects"
+              viewTransition
               className={({ isActive }) =>
                 `text-base px-3 py-2 rounded-md transition-colors ${
                   isActive
@@ -123,6 +129,7 @@ function Navbar() {
           <li>
             <NavLink
               to="experience"
+              viewTransition
               className={({ isActive }) =>
                 `text-base px-3 py-2 rounded-md transition-colors ${
                   isActive
@@ -137,6 +144,7 @@ function Navbar() {
           <li>
             <NavLink
               to="skills"
+              viewTransition
               className={({ isActive }) =>
                 `text-base px-3 py-2 rounded-md transition-colors ${
                   isActive

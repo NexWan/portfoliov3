@@ -1,7 +1,8 @@
 import ProjectBadge from "../components/ProjectBadge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GithubOutlined } from "@ant-design/icons";
 import { useThemeStore } from "../stores/themeStore";
+import FadeInOnScroll from "../components/FadeInOnScroll";
 
 function Projects() {
   const projects = [
@@ -46,7 +47,8 @@ function Projects() {
     },
     {
       title: "PostgreSQL Zig Wrapper",
-      description:"A wrapper for PostgreSQL written in Zig, providing a simple interface for database operations.",
+      description:
+        "A wrapper for PostgreSQL written in Zig, providing a simple interface for database operations.",
       link: "https://github.com/NexWan/zig-postgresql-wrapper",
       Techs: ["Zig", "C"],
       status: "In Development",
@@ -81,7 +83,8 @@ function Projects() {
     },
     {
       title: "MindScrap",
-      description:"A CLI tool for scraping and creating schedules from mindbox, built with Python.",
+      description:
+        "A CLI tool for scraping and creating schedules from mindbox, built with Python.",
       link: "https://github.com/NexWan/MindScrap",
       Techs: ["Python", "CLI", "BeautifulSoup"],
       status: "Completed",
@@ -89,7 +92,8 @@ function Projects() {
     },
     {
       title: "Chase a Rooster",
-      description:"A simple game made with Unity, where you chase a rooster around maps and catch them.",
+      description:
+        "A simple game made with Unity, where you chase a rooster around maps and catch them.",
       link: "https://github.com/NexWan/Proyecto-Final-Graficacion",
       Techs: ["C#", "Unity"],
       status: "Completed",
@@ -97,7 +101,8 @@ function Projects() {
     },
     {
       title: "Manos que hablan",
-      description:"A mobile application for learning sign language, built with React Native for a Hackaton.",
+      description:
+        "A mobile application for learning sign language, built with React Native for a Hackaton.",
       link: "https://github.com/NexWan/senias-mobile",
       Techs: ["TypeScript", "React Native"],
       status: "Completed",
@@ -105,7 +110,8 @@ function Projects() {
     },
     {
       title: "IoT Smart Container",
-      description:"An IoT project that monitors the status of a container, built with ESP and Oracle Cloud for a Hackaton.",
+      description:
+        "An IoT project that monitors the status of a container, built with ESP and Oracle Cloud for a Hackaton.",
       link: "https://github.com/NexWan/iot-container",
       Techs: ["Rust", "ESP", "Oracle Cloud"],
       status: "Completed",
@@ -127,7 +133,7 @@ function Projects() {
         technologies and keep improving my skills and tech stack.
       </p>
       <div className="mt-8 w-screen bg-secondary">
-        <div className="max-w-6xl 2xl:max-w-7xl mx-auto p-4 flex flex-col items-center justify-center overflow-y-scroll">
+        <div className="max-w-6xl 2xl:max-w-7xl mx-auto p-4 flex flex-col items-center justify-center">
           <div className="tabs">
             {[
               "All",
@@ -144,67 +150,71 @@ function Projects() {
                 className={`tab tab-bordered tab-active text-secondary-content ${
                   selectedCategory === category
                     ? "tab-active bg-primary text-primary-content rounded-xl"
-                    : "bg-secondary text-secondary-content "}`}
+                    : "bg-secondary text-secondary-content "
+                }`}
                 onClick={() => setSelectedCategory(category)}
               >
                 {category}
               </button>
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 pb-24">
             {projects
               .filter(
                 (project) =>
                   selectedCategory === "All" ||
                   project.category.includes(selectedCategory)
               )
-              .map((project) => (
-                <div
-                  key={project.title}
-                  className="card bg-base-100 shadow-xl hover:scale-105 transition-transform duration-300 hover:cursor-pointer hover:shadow-2xl"
-                >
-                  <figure className="w-full">
-                    <ProjectBadge
-                      title={project.title}
-                      techs={project.Techs}
-                      tsuchinoko={theme === "night" ? "tsuchinoko_dark.png" : "tsuchinokobg.png"} 
-                    />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">{project.title}</h2>
-                    <p>{project.description}</p>
-                    <div className="card-actions justify-center">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary"
-                      >
-                        <GithubOutlined className="mr-2" />
-                        View Project
-                      </a>
-                    </div>
-                    <div className="mt-2">
-                      <span
-                        className={`badge ${
-                          project.status == "Completed"
-                            ? "badge-success"
-                            : "badge-warning"
-                        }`}
-                      >
-                        {project.status}
-                      </span>
-                      {project.Techs.map((tech) => (
-                        <span
-                          key={tech}
-                          className="badge badge-primary ml-1 my-1"
+              .map((project, index) => (
+                <FadeInOnScroll key={`${project.title} - ${selectedCategory}`} delay={index * 0.05}>
+                  <div className="card bg-base-100 shadow-xl hover:scale-105 transition-transform duration-300 hover:cursor-pointer hover:shadow-2xl">
+                    <figure className="w-full">
+                      <ProjectBadge
+                        title={project.title}
+                        techs={project.Techs}
+                        tsuchinoko={
+                          theme === "night"
+                            ? "tsuchinoko_dark.png"
+                            : "tsuchinokobg.png"
+                        }
+                      />
+                    </figure>
+                    <div className="card-body">
+                      <h2 className="card-title">{project.title}</h2>
+                      <p>{project.description}</p>
+                      <div className="card-actions justify-center">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary"
                         >
-                          {tech}
+                          <GithubOutlined className="mr-2" />
+                          View Project
+                        </a>
+                      </div>
+                      <div className="mt-2">
+                        <span
+                          className={`badge ${
+                            project.status == "Completed"
+                              ? "badge-success"
+                              : "badge-warning"
+                          }`}
+                        >
+                          {project.status}
                         </span>
-                      ))}
+                        {project.Techs.map((tech) => (
+                          <span
+                            key={tech}
+                            className="badge badge-primary ml-1 my-1"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </FadeInOnScroll>
               ))}
           </div>
         </div>
