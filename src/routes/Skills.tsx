@@ -163,7 +163,7 @@ function Skills() {
   const theme = useThemeStore((state) => state.theme);
   const [selectedCategory, setCategory] = useState("All");
   return (
-    <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
+    <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl lg:px-4 pt-4 m-0">
       <h1 className="lg:text-4xl text-2xl mx-4 lg:mx-2 font-bold mb-4 self-start text-primary 2xl:text-5xl">
         Skills
       </h1>

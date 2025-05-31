@@ -123,7 +123,7 @@ function Projects() {
   const theme = useThemeStore((state) => state.theme);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
+    <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl lg:px-4 pt-4 m-0">
       <h1 className="lg:text-4xl text-2xl mx-2 lg:mx-2 text-primary font-bold lg:mb-4 self-start 2xl:text-5xl ">
         Projects
       </h1>

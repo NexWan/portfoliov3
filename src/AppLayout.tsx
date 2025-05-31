@@ -14,7 +14,7 @@ function AppLayout() {
         <Navbar />
       </header>
       <main className="flex w-full h-max justify-center items-center bg-base-100">
-        <Outlet />
+        <Outlet/>
       </main>
       <FooterComponent />
     </div>
