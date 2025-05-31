@@ -65,7 +65,7 @@ export default function MainPage() {
         container.current!.classList.remove("justify-center");
         container.current!.classList.add(
           "justify-start",
-          "2xl:!justify-center"
+          "3xl:!justify-center"
         );
         gsap.set(block.current, {
           clearProps: "transform",
