@@ -11,6 +11,7 @@ export default function MainPage() {
   const headline = useRef<HTMLHeadingElement>(null);
   const subline = useRef<HTMLHeadingElement>(null);
   const secondDiv = useRef<HTMLDivElement>(null);
+  const showMore = useRef<HTMLButtonElement>(null);
 
   const theme = useThemeStore((state) => state.theme);
   /* ---------- rotating subtitle ----------- */
@@ -74,7 +75,11 @@ export default function MainPage() {
       })
       .to(block.current, { y: -20, ease: "bounce.out" })
       .from(subline.current, { opacity: 0, y: 20 }, "<0.2")
-      .from(secondDiv.current, { opacity: 0 }, "<0.1");
+      .from(secondDiv.current, { opacity: 0 }, "<0.1")
+      .from(
+        showMore.current,
+        { opacity: 0, y:45}, "<0.1"
+      );
 
     return () => {
       tl.kill();
@@ -83,11 +88,11 @@ export default function MainPage() {
 
   /* ------------- markup ------------------- */
   return (
-    <div className="flex flex-row overflow-hidden w-full h-full justify-between">
+    <div className="flex lg:flex-row flex-col overflow-hidden w-full h-full  justify-between scroll-smooth">
       <ParticlesComp />
       <div
         ref={container}
-        className="w-1/2 h-screen flex items-center justify-center overflow-hidden bg-content relative"
+        className="lg:w-1/2 h-screen flex items-center justify-center overflow-hidden bg-content relative"
       >
         <div
           ref={block}
@@ -95,11 +100,11 @@ export default function MainPage() {
         >
           <h1
             ref={headline}
-            className="text-6xl font-extrabold 3xl:!text-10xl 2xl:text-9xl "
+            className="lg:text-6xl text-5xl font-extrabold 3xl:!text-10xl 2xl:text-9xl "
           >
             <span className="text-primary">NexWan</span>
           </h1>
-          <h2 ref={subline} className="text-2xl mt-2 2xl:text-4xl 3xl:!text-5xl">
+          <h2 ref={subline} className="lg:text-2xl mt-2 2xl:text-4xl 3xl:!text-5xl">
             <TextTransition
               springConfig={presets.wobbly}
               className=""
@@ -112,13 +117,19 @@ export default function MainPage() {
               <span className="text-primary font-bold 2xl:text-4xl 3xl:!text-5xl"> Dev</span>
             ) : null}
           </h2>
+          <button className="lg:hidden btn btn-primary mt-2" ref={showMore}>
+            <a href="#about" className="text-primary-content">
+              Learn more
+            </a>
+          </button>
         </div>
       </div>
       <div
         ref={secondDiv}
-        className="flex-1 flex flex-col items-center text-base-content self-end place-self-end justify-center bg-base-200 relative z-20 p-10 m-0 max-w-1/2 h-full"
+        id="about"
+        className="flex flex-col items-center text-base-content justify-center bg-base-200 relative z-20 p-10 m-0 lg:max-w-1/2 h-screen"
       >
-        <p className="text-3xl text-primary font-semibold 2xl:text-5xl 3xl:!text-6xl">
+        <p className="lg:text-3xl text-primary font-semibold 2xl:text-5xl 3xl:!text-6xl">
           Welcome to my portfolio!
         </p>
         <motion.img
@@ -127,7 +138,7 @@ export default function MainPage() {
           }
           key={theme}
           alt="Tsuchinoko Logo"
-          className="h-24 w-24 mt-4 3xl:!h-32 3xl:!w-32"
+          className="lg:h-24 lg:w-24 mt-4 3xl:!h-32 3xl:!w-32 w-16 h-16"
           animate={{
             x: [0, -1, 1, -1, 1, 0],
             y: [0, 1, -1, 1, -1, 0],
@@ -139,7 +150,7 @@ export default function MainPage() {
             ease: "easeInOut",
           }}
         />{" "}
-        <p className="text-lg mt-2 2xl:text-2xl 2xl:max-w-6xl 3xl:!text-3xl">
+        <p className="lg:text-lg text-sm mt-2 2xl:text-2xl 2xl:max-w-6xl 3xl:!text-3xl">
           <span className="text-primary font-bold">Hello!</span> 👋
           my name is{" "}
           <span className="text-primary text-balance font-bold 2xl:text-2xl 3xl:!text-3xl">
@@ -154,7 +165,7 @@ export default function MainPage() {
           <span className="text-primary font-bold 2xl:text-2xl 3xl:!text-3xl">The social network</span>, it
           inspired me to pursue a career in technology and software development.
         </p>
-        <p className="text-lg mt-2 2xl:text-2xl 2xl:max-w-6xl 3xl:!text-3xl">
+        <p className="lg:text-lg text-sm mt-2 2xl:text-2xl 2xl:max-w-6xl 3xl:!text-3xl">
           In this portfolio, you'll find some of my projects and works that I've
           done throughout my career. I hope you enjoy exploring them as much as
           I enjoyed creating them!

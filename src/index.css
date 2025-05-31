@@ -7,3 +7,7 @@
   --breakpoint-3xl: 2560px;
   --text-10xl: 10rem;
 }
+
+html {
+  scroll-behavior: smooth;
+}

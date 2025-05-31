@@ -1,4 +1,4 @@
-import { BulbOutlined, MoonOutlined } from "@ant-design/icons";
+import { BulbOutlined, MoonOutlined, MenuOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { useThemeStore } from "../stores/themeStore";
 
@@ -11,13 +11,7 @@ function Navbar() {
       <div className="navbar-start 2xl:justify-center">
         <div className="dropdown">
           <div tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            ></svg>
+            <MenuOutlined className="text-xl" />
           </div>
           <ul
             tabIndex={0}

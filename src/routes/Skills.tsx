@@ -164,10 +164,10 @@ function Skills() {
   const [selectedCategory, setCategory] = useState("All");
   return (
     <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
-      <h1 className="text-4xl font-bold mb-4 self-start text-primary 2xl:text-5xl">
+      <h1 className="lg:text-4xl text-2xl mx-4 lg:mx-2 font-bold mb-4 self-start text-primary 2xl:text-5xl">
         Skills
       </h1>
-      <p className="text-lg text-base-content 2xl:text-xl 3xl:!text-2xl">
+      <p className="lg:text-lg text-sm mx-4 lg:mx-2 text-base-content 2xl:text-xl 3xl:!text-2xl">
         During my period as an student and my short period as a developer, I
         have learned a lot of technologies and programming languages. I'd
         consider myself a full-stack developer, but I have more experience in
@@ -179,13 +179,13 @@ function Skills() {
       </p>
       <div className="bg-secondary flex flex-col items-center justify-center w-screen mt-8">
         <div className="flex flex-col items-center justify-center p-4 max-w-6xl 2xl:max-w-7xl">
-          <div className="tabs space-x-2">
+          <div className="tabs space-x-2 sticky lg:static lg:shadow-none top-16 shadow-2xl rounded-xl bg-secondary w-full justify-center z-10">
             {["All", "Languages", "Frameworks", "Tools", "Cloud"].map(
               (category) => (
                 <button
                   key={category}
                   onClick={() => setCategory(category)}
-                  className={`tab tab-bordered tab-active text-secondary-content 2xl:text-xl ${
+                  className={`tab tab-bordered tab-active  text-secondary-content 2xl:text-xl ${
                     selectedCategory === category
                       ? "tab-active bg-primary text-primary-content rounded-xl"
                       : "bg-secondary text-secondary-content "
@@ -196,7 +196,7 @@ function Skills() {
               )
             )}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
             {techs
               .filter(
                 (tech) =>
