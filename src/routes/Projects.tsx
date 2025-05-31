@@ -124,10 +124,10 @@ function Projects() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
-      <h1 className="text-4xl text-primary font-bold mb-4 self-start">
+      <h1 className="text-4xl text-primary font-bold mb-4 self-start 2xl:text-5xl ">
         Projects
       </h1>
-      <p className="text-lg">
+      <p className="text-lg 2xl:text-xl 3xl:!text-2xl">
         I've had the opportunity to work on several personal projects! Is
         something I personally enjoy doing, as it allows me to explore new
         technologies and keep improving my skills and tech stack.
@@ -147,7 +147,7 @@ function Projects() {
             ].map((category) => (
               <button
                 key={category}
-                className={`tab tab-bordered tab-active text-secondary-content ${
+                className={`tab tab-bordered tab-active text-secondary-content 2xl:text-xl 3xl:!text-2xl ${
                   selectedCategory === category
                     ? "tab-active bg-primary text-primary-content rounded-xl"
                     : "bg-secondary text-secondary-content "
@@ -180,14 +180,14 @@ function Projects() {
                       />
                     </figure>
                     <div className="card-body">
-                      <h2 className="card-title">{project.title}</h2>
-                      <p>{project.description}</p>
+                      <h2 className="card-title 2xl:text-2xl">{project.title}</h2>
+                      <p className="2xl: text-lg 3xl:!text-xl">{project.description}</p>
                       <div className="card-actions justify-center">
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn btn-primary"
+                          className="btn btn-primary 2xl:btn-lg"
                         >
                           <GithubOutlined className="mr-2" />
                           View Project
@@ -195,7 +195,7 @@ function Projects() {
                       </div>
                       <div className="mt-2">
                         <span
-                          className={`badge ${
+                          className={`badge 2xl:badge-lg ${
                             project.status == "Completed"
                               ? "badge-success"
                               : "badge-warning"
@@ -206,7 +206,7 @@ function Projects() {
                         {project.Techs.map((tech) => (
                           <span
                             key={tech}
-                            className="badge badge-primary ml-1 my-1"
+                            className="badge badge-primary ml-1 my-1 2xl:badge-lg"
                           >
                             {tech}
                           </span>

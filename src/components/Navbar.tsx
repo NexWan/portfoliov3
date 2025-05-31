@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div className="navbar bg-content shadow-sm h-full">
-      <div className="navbar-start">
+      <div className="navbar-start 2xl:justify-center">
         <div className="dropdown">
           <div tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -85,23 +85,23 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">
+        <a className="btn btn-ghost normal-case text-xl 2xl:text-3xl">
           <img
             src={theme === "valentine" ? "/tsuchinokobg.png" : "/tsuchinoko_dark.png"}
             alt="Tsuchinoko Logo"
-            className="h-10 w-10 rounded-full inline-block mr-2"
+            className="h-10 w-10 rounded-full inline-block mr-2 2xl:h-12 2xl:w-12"
           />
           NexWan
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className={`menu menu-horizontal px-1`}>
+        <ul className={`menu menu-horizontal px-1 *:2xl:text-2xl`}>
           <li>
             <NavLink
               to="/"
               viewTransition
               className={({ isActive }) =>
-                `text-base px-3 py-2 rounded-md transition-colors ${
+                `text-base px-3 py-2 rounded-md 2xl:text-2xl transition-colors ${
                   isActive
                     ? "bg-primary text-white"
                     : "hover:bg-base-200 text-content"
@@ -116,7 +116,7 @@ function Navbar() {
               to="projects"
               viewTransition
               className={({ isActive }) =>
-                `text-base px-3 py-2 rounded-md transition-colors ${
+                `text-base px-3 py-2 rounded-md transition-colors 2xl:text-2xl ${
                   isActive
                     ? "bg-primary text-white"
                     : "hover:bg-base-200 text-content"
@@ -131,7 +131,7 @@ function Navbar() {
               to="experience"
               viewTransition
               className={({ isActive }) =>
-                `text-base px-3 py-2 rounded-md transition-colors ${
+                `text-base px-3 py-2 rounded-md 2xl:text-2xl transition-colors ${
                   isActive
                     ? "bg-primary text-white"
                     : "hover:bg-base-200 text-content"
@@ -146,7 +146,7 @@ function Navbar() {
               to="skills"
               viewTransition
               className={({ isActive }) =>
-                `text-base px-3 py-2 rounded-md transition-colors ${
+                `text-base px-3 py-2 rounded-md 2xl:text-2xl transition-colors ${
                   isActive
                     ? "bg-primary text-white"
                     : "hover:bg-base-200 text-content"
@@ -158,8 +158,8 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <button onClick={toggleTheme} className="btn btn-circle">
+      <div className="navbar-end 2xl:justify-center">
+        <button onClick={toggleTheme} className="btn btn-circle 2xl:btn-lg">
           {theme === "light" ? <MoonOutlined /> : <BulbOutlined />}
         </button>
       </div>

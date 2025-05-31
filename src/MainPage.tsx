@@ -31,23 +31,51 @@ export default function MainPage() {
   useLayoutEffect(() => {
     const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const margin = em * 2;
+    const is3xl = window.innerWidth >= 2560;
+
+    // Calculate distance based on screen size
     const { left } = block.current!.getBoundingClientRect();
-    const distance = -(left - margin + 1);
+    let targetPosition;
+
+    if (is3xl) {
+      // For 2xl screens, calculate distance to justify-end position
+      const containerWidth = container.current!.offsetWidth;
+      targetPosition =
+        containerWidth - Math.abs(block.current!.offsetWidth) - margin - left;
+      console.log(
+        `Container Width: ${containerWidth}, Block Width: ${
+          block.current!.offsetWidth
+        }, Margin: ${margin}, Target Position: ${targetPosition}`
+      );
+    } else {
+      // For smaller screens, calculate distance to justify-start position
+      targetPosition = margin;
+    }
+
+    const distance = is3xl
+      ? 0
+      : targetPosition -
+        (left - container.current!.getBoundingClientRect().left);
 
     const tl = gsap.timeline({ defaults: { duration: 0.8 } });
 
     tl.from(headline.current, { opacity: 0, yPercent: -50 })
       .to(block.current, { x: distance, ease: "power2.inOut" })
       .add(() => {
-        container.current!.classList.replace("justify-center", "justify-start");
+        container.current!.classList.remove("justify-center");
+        container.current!.classList.add(
+          "justify-start",
+          "2xl:!justify-center"
+        );
         gsap.set(block.current, {
           clearProps: "transform",
-          marginLeft: margin,
+          marginLeft: !is3xl ? `${margin}px` : "0px",
         });
       })
-      .to(block.current, { y: -20, ease: "bounce.out" }) // small bounce
-      .from(subline.current, { opacity: 0, y: 20 }, "<0.2") // subtitle
-      .from(secondDiv.current, { opacity: 0 }, "<0.1"); // second div
+      .to(block.current, { y: -20, ease: "bounce.out" })
+      .from(subline.current, { opacity: 0, y: 20 }, "<0.2")
+      .from(secondDiv.current, { opacity: 0 }, "<0.1");
+
     return () => {
       tl.kill();
     };
@@ -55,31 +83,42 @@ export default function MainPage() {
 
   /* ------------- markup ------------------- */
   return (
-    <div className="flex flex-row overflow-hidden w-full h-full">
+    <div className="flex flex-row overflow-hidden w-full h-full justify-between">
+      <ParticlesComp />
       <div
         ref={container}
-        className="w-1/2 h-screen flex items-center bg-base-100 justify-center overflow-hidden bg-content relative"
+        className="w-1/2 h-screen flex items-center justify-center overflow-hidden bg-content relative"
       >
-        <ParticlesComp />
-        <div ref={block} className="flex flex-col items-start z-10 ">
-          <h1 ref={headline} className="text-6xl font-extrabold">
+        <div
+          ref={block}
+          className="flex flex-col items-start z-10 2xl:justify-end"
+        >
+          <h1
+            ref={headline}
+            className="text-6xl font-extrabold 3xl:!text-10xl 2xl:text-9xl "
+          >
             <span className="text-primary">NexWan</span>
           </h1>
-          <h2 ref={subline} className="text-2xl mt-2">
-            <TextTransition springConfig={presets.wobbly} direction="up" inline>
+          <h2 ref={subline} className="text-2xl mt-2 2xl:text-4xl 3xl:!text-5xl">
+            <TextTransition
+              springConfig={presets.wobbly}
+              className=""
+              direction="up"
+              inline
+            >
               {TITLES[index % TITLES.length]}
             </TextTransition>
             {index % TITLES.length !== 0 ? (
-              <span className="text-primary font-bold"> Dev</span>
+              <span className="text-primary font-bold 2xl:text-4xl 3xl:!text-5xl"> Dev</span>
             ) : null}
           </h2>
         </div>
       </div>
       <div
         ref={secondDiv}
-        className="flex-1 flex flex-col items-center text-base-content justify-center bg-base-200 p-10 m-0 w-full h-full"
+        className="flex-1 flex flex-col items-center text-base-content self-end place-self-end justify-center bg-base-200 relative z-20 p-10 m-0 max-w-1/2 h-full"
       >
-        <p className="text-3xl text-primary font-semibold">
+        <p className="text-3xl text-primary font-semibold 2xl:text-5xl 3xl:!text-6xl">
           Welcome to my portfolio!
         </p>
         <motion.img
@@ -88,7 +127,7 @@ export default function MainPage() {
           }
           key={theme}
           alt="Tsuchinoko Logo"
-          className="h-24 w-24 mt-4"
+          className="h-24 w-24 mt-4 3xl:!h-32 3xl:!w-32"
           animate={{
             x: [0, -1, 1, -1, 1, 0],
             y: [0, 1, -1, 1, -1, 0],
@@ -100,24 +139,27 @@ export default function MainPage() {
             ease: "easeInOut",
           }}
         />{" "}
-        <p className="text-lg mt-2">
-          My name is{" "}
-          <span className="text-primary text-balance font-bold">Leo</span>, and
-          I'm currently a student at the Instituto Tecnologico de Saltillo. I'm
-          passionate about everything related to technology, especially in the
-          field of software development. I got into programming at a young age,
-          and since then, I've been fascinated by the world of code and its
-          endless possibilities. <br></br>
+        <p className="text-lg mt-2 2xl:text-2xl 2xl:max-w-6xl 3xl:!text-3xl">
+          <span className="text-primary font-bold">Hello!</span> 👋
+          my name is{" "}
+          <span className="text-primary text-balance font-bold 2xl:text-2xl 3xl:!text-3xl">
+            Leo
+          </span>
+          , and I'm currently a student at the Instituto Tecnologico de
+          Saltillo. I'm passionate about everything related to technology,
+          especially in the field of software development. I got into
+          programming at a young age, and since then, I've been fascinated by
+          the world of code and its endless possibilities. <br></br>
           One of my favorite movies is{" "}
-          <span className="text-primary font-bold">The social network</span>, it
+          <span className="text-primary font-bold 2xl:text-2xl 3xl:!text-3xl">The social network</span>, it
           inspired me to pursue a career in technology and software development.
         </p>
-        <p className="text-lg mt-2">
+        <p className="text-lg mt-2 2xl:text-2xl 2xl:max-w-6xl 3xl:!text-3xl">
           In this portfolio, you'll find some of my projects and works that I've
           done throughout my career. I hope you enjoy exploring them as much as
           I enjoyed creating them!
         </p>
-        <p className="text-sm mt-4 text-base-content">
+        <p className="text-sm mt-4 text-base-content 2xl:text-lg 2xl:max-w-6xl 3xl:!text-xl">
           You can navigate through the site using the links in the header. Or
           you can go directly to my projects by clicking this{" "}
           <a href="/projects" className="text-primary font-bold">

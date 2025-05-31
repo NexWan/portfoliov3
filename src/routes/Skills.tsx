@@ -164,10 +164,10 @@ function Skills() {
   const [selectedCategory, setCategory] = useState("All");
   return (
     <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
-      <h1 className="text-4xl font-bold mb-4 self-start text-primary">
+      <h1 className="text-4xl font-bold mb-4 self-start text-primary 2xl:text-5xl">
         Skills
       </h1>
-      <p className="text-lg text-base-content">
+      <p className="text-lg text-base-content 2xl:text-xl 3xl:!text-2xl">
         During my period as an student and my short period as a developer, I
         have learned a lot of technologies and programming languages. I'd
         consider myself a full-stack developer, but I have more experience in
@@ -185,7 +185,7 @@ function Skills() {
                 <button
                   key={category}
                   onClick={() => setCategory(category)}
-                  className={`tab tab-bordered tab-active text-secondary-content ${
+                  className={`tab tab-bordered tab-active text-secondary-content 2xl:text-xl ${
                     selectedCategory === category
                       ? "tab-active bg-primary text-primary-content rounded-xl"
                       : "bg-secondary text-secondary-content "

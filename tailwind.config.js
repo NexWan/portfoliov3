@@ -26,6 +26,9 @@ export default {
       animation: {
         shake: 'shake 0.8s infinite',
       },
+      screens: {
+        "3xl": "2560px",
+      }
     },
   },
 };

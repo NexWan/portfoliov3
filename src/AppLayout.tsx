@@ -10,7 +10,7 @@ function AppLayout() {
     <>
     <MouseTrail strokeColor={theme === "valentine" ? "#22223b" : "#f0f0f0"} />
     <div className="flex flex-col h-screen w-screen overflow-auto">
-      <header className="flex items-start justify-start bg-neutral text-neutral-content sticky top-0 z-50">
+      <header className="flex 2xl:max-h-1/3 items-start justify-start bg-neutral text-neutral-content sticky top-0 z-50">
         <Navbar />
       </header>
       <main className="flex w-full h-max justify-center items-center bg-base-100">

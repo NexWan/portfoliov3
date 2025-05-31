@@ -3,3 +3,7 @@
   themes: valentine --default, dracula --prefersdark;
 }
 
+@theme {
+  --breakpoint-3xl: 2560px;
+  --text-10xl: 10rem;
+}

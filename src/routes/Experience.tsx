@@ -68,8 +68,8 @@ function Experience() {
   ];
   return (
     <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
-        <h1 className="text-4xl font-bold mb-4 self-start text-primary">Experience</h1>
-        <p className="text-lg text-justify">
+        <h1 className="text-4xl font-bold mb-4 self-start text-primary 2xl:text-5xl">Experience</h1>
+        <p className="text-lg text-justify 2xl:*text-xl 3xl:!text-2xl">
           Currently my experience is very limited, but I have worked in some
           companies and participated in some contests.
         </p>
@@ -89,17 +89,17 @@ function Experience() {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">{internship.position}</h2>
-                <p className="font-semibold text-xl">{internship.company}</p>
-                <p className="text-sm text-base-content">
+                <h2 className="card-title 2xl:text-2xl">{internship.position}</h2>
+                <p className="font-semibold text-xl 2xl:text-2xl">{internship.company}</p>
+                <p className="text-sm text-base-content 2xl:text-md 3xl:!text-lg">
                   {internship.duration}
                 </p>
-                <p className="text-justify">{internship.description}</p>
+                <p className="text-justify 2xl:text-lg">{internship.description}</p>
                 <div className="flex flex-wrap mt-2">
                   {internship.techs.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="badge badge-secondary mr-2 mb-2"
+                      className="badge badge-secondary mr-2 mb-2 2xl:badge-lg"
                     >
                       {tech}
                     </span>
@@ -122,15 +122,15 @@ function Experience() {
                     />
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">{contest.name}</h2>
-                    <p className="font-semibold text-xl">{contest.position}</p>
-                    <p className="text-sm text-base-content">{contest.date}</p>
-                    <p className="text-justify">{contest.description}</p>
+                    <h2 className="card-title 2xl:text-2xl">{contest.name}</h2>
+                    <p className="font-semibold text-xl 2xl:text-xl">{contest.position}</p>
+                    <p className="text-sm text-base-content 2xl:text-md 3xl:!text-lg">{contest.date}</p>
+                    <p className="text-justify 2xl:text-lg">{contest.description}</p>
                     <div className="flex flex-wrap mt-2">
                     {contest.techs.map((tech, techIndex) => (
                         <span
                         key={techIndex}
-                        className="badge badge-secondary mr-2 mb-2"
+                        className="badge badge-secondary mr-2 mb-2 2xl:badge-lg"
                         >
                         {tech}
                         </span>
