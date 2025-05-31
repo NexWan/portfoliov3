@@ -12,18 +12,10 @@ import { MailOutlined, TwitterOutlined, GithubOutlined, DiscordOutlined, Linkedi
       </nav>
       <div className="divider divider-horizontal"></div>
       <nav>
-        <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
-      </nav>
-      <div className="divider divider-horizontal"></div>
-      <nav>
-        <h6 className="footer-title">Legal</h6>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <h6 className="footer-title">Made By</h6>
+        <a className="link link-hover" href="https://github.com/NexWan" target="_blank" rel="noopener noreferrer">
+          <span className="text-lg font-semibold">NexWan</span>
+        </a>
       </nav>
     </footer>;
   }

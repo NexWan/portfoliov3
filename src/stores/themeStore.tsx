@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 interface ThemeState {
   theme: string;
@@ -6,17 +7,30 @@ interface ThemeState {
   setTheme: (theme: string) => void;
 }
 
-export const useThemeStore = create<ThemeState>((set) => ({
-  theme: document.documentElement.getAttribute('data-theme') || 'valentine',
-  toggleTheme: () => {
-    set((state) => {
-      const newTheme = state.theme === 'valentine' ? 'night' : 'valentine';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      return { theme: newTheme };
-    });
-  },
-  setTheme: (newTheme: string) => {
-    document.documentElement.setAttribute('data-theme', newTheme);
-    set({ theme: newTheme });
-  },
-}));
+export const useThemeStore = create<ThemeState>()(
+  persist(
+    (set, get) => ({
+      // Inicialmente, podría no necesitar leer localStorage aquí, porque `persist` se encarga
+      theme:
+        document.documentElement.getAttribute('data-theme') ||
+        'dracula',
+
+      toggleTheme: () => {
+        const current = get().theme;
+        const newTheme = current === 'valentine' ? 'dracula' : 'valentine';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        set({ theme: newTheme });
+      },
+      setTheme: (newTheme: string) => {
+        document.documentElement.setAttribute('data-theme', newTheme);
+        set({ theme: newTheme });
+      },
+    }),
+    {
+      name: 'theme-storage', // clave en localStorage
+      storage: createJSONStorage(() => localStorage), // usa el helper para persistencia JSON
+      // opcional: si quisieras usar sessionStorage en vez de localStorage:
+      // storage: createJSONStorage(() => sessionStorage),
+    }
+  )
+);

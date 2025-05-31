@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FadeInOnScroll from "../components/FadeInOnScroll";
+import { useThemeStore } from "../stores/themeStore";
 function Skills() {
   const techs = [
     {
@@ -49,7 +50,10 @@ function Skills() {
     },
     {
       name: "Rust",
-      icon: `<i class="devicon-rust-plain colored"></i>`,
+      icon: {
+        white: `<i class="devicon-rust-plain"></i>`,
+        colored: `<i class="devicon-rust-plain colored"></i>`,
+      },
       category: "Languages",
     },
     {
@@ -69,7 +73,10 @@ function Skills() {
     },
     {
       name: "BunJS",
-      icon: `<i class="devicon-bun-plain colored"></i>`,
+      icon: {
+        white: `<i class="devicon-bun-plain"></i>`,
+        colored: `<i class="devicon-bun-plain colored"></i>`,
+      },
       category: "Frameworks",
     },
     {
@@ -153,6 +160,7 @@ function Skills() {
       category: "Cloud",
     },
   ];
+  const theme = useThemeStore((state) => state.theme);
   const [selectedCategory, setCategory] = useState("All");
   return (
     <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl px-4 pt-4 m-0">
@@ -195,25 +203,31 @@ function Skills() {
                   selectedCategory === "All" ||
                   tech.category === selectedCategory
               )
-              .map((tech, index) => (
-                <FadeInOnScroll
-                  key={`${tech.name} - ${selectedCategory}`}
-                  delay={index * 0.05}
-                >
-                  <div className="card bg-base-100 shadow-xl hover:scale-105 transition-transform hover:cursor-pointer hover:shadow-2xl">
-                    <div className="card-body flex flex-col items-center w-40">
-                      <div
-                        className="text-5xl mb-2"
-                        dangerouslySetInnerHTML={{ __html: tech.icon }}
-                      ></div>
-                      <h2 className="card-title">{tech.name}</h2>
-                      <p className="text-sm text-base-content">
-                        {tech.category}
-                      </p>
+              .map((tech, index) => {
+                let iconHtml = tech.icon;
+                if (typeof tech.icon === "object") {
+                  iconHtml = theme === "dark" ? tech.icon.colored : tech.icon.white;
+                }
+                return (
+                  <FadeInOnScroll
+                    key={`${tech.name} - ${selectedCategory}`}
+                    delay={index * 0.05}
+                  >
+                    <div className="card bg-base-100 shadow-xl hover:scale-105 transition-transform hover:cursor-pointer hover:shadow-2xl">
+                      <div className="card-body flex flex-col items-center w-40">
+                        <div
+                          className="text-5xl mb-2"
+                          dangerouslySetInnerHTML={{ __html: iconHtml }}
+                        ></div>
+                        <h2 className="card-title">{tech.name}</h2>
+                        <p className="text-sm text-base-content">
+                          {tech.category}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </FadeInOnScroll>
-              ))}
+                  </FadeInOnScroll>
+                );
+              })}
           </div>
         </div>
       </div>

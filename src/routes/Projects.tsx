@@ -1,5 +1,5 @@
 import ProjectBadge from "../components/ProjectBadge";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GithubOutlined } from "@ant-design/icons";
 import { useThemeStore } from "../stores/themeStore";
 import FadeInOnScroll from "../components/FadeInOnScroll";
@@ -173,7 +173,7 @@ function Projects() {
                         title={project.title}
                         techs={project.Techs}
                         tsuchinoko={
-                          theme === "night"
+                          theme === "dracula"
                             ? "tsuchinoko_dark.png"
                             : "tsuchinokobg.png"
                         }
