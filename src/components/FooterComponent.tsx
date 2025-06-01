@@ -1,4 +1,4 @@
-import { MailOutlined, TwitterOutlined, GithubOutlined, DiscordOutlined, LinkedinOutlined } from "@ant-design/icons";
+import { MailOutlined, TwitterOutlined, GithubOutlined, LinkedinOutlined } from "@ant-design/icons";
  
  function FooterComponent() {
     return <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10 flex justify-around items-center z-10">
