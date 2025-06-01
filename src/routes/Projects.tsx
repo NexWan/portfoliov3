@@ -124,7 +124,7 @@ function Projects() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full max-w-6xl 2xl:max-w-7xl lg:px-4 pt-4 m-0">
-      <h1 className="lg:text-4xl text-2xl mx-2 lg:mx-2 text-primary font-bold lg:mb-4 self-start 2xl:text-5xl ">
+      <h1 className="lg:text-4xl text-2xl mx-2 lg:mx-2 text-primary font-bold lg:mb-4 self-start 2xl:text-5xl " id="projects-title">
         Projects
       </h1>
       <p className="lg:text-lg text-sm m-4 lg:m-0 2xl:text-xl 3xl:!text-2xl">
@@ -155,7 +155,7 @@ function Projects() {
                 onClick={() => {
                   setSelectedCategory(category);
                   window.scrollTo({
-                    top: document.getElementById("projects-section")?.offsetTop,
+                    top: document.getElementById("projects-title")?.offsetTop || 0,
                     behavior: "smooth",
                   });
                 }}
