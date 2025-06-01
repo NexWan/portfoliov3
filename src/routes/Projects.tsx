@@ -10,7 +10,7 @@ function Projects() {
       title: "Portfolio Website",
       description:
         "A personal portfolio website to showcase my projects and skills.",
-      link: "https://nexwan.com",
+      link: "https://github.com/NexWan/portfoliov3",
 
       Techs: ["TypeScript", "React", "Tailwind CSS", "DaisyUI", "Vite"],
       status: "In Development",
