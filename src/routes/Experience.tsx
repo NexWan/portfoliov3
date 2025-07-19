@@ -8,11 +8,25 @@ function Experience() {
     AOS.init({ duration: 800 });
   }, []);
 
-  const internships = [
+  const jobExperience = [
+    {
+      company: "Justia",
+      position: "Associate Software Engineer",
+      duration: "June 2025 - Present",
+      description:
+        "Working on developing and maintaining software solutions, focusing on backend development.",
+      image: "https://images.squarespace-cdn.com/content/v1/5c1221fa7106993ecd8a3344/1547463896893-2ME2S6ZDJTC23L7K4BFR/justia+logo-min.png?format=1000w",
+      techs: [
+        "Python",
+        "PHP",
+        "Laravel",
+        "Docker"
+      ]
+    },
     {
       company: "Softtek",
       position: "Automation Engineer Intern",
-      duration: "December 2024 - Present",
+      duration: "December 2024 - May 2025",
       description:
         "Working on automating processes and improving efficiency in software development.",
       image:
@@ -91,31 +105,31 @@ function Experience() {
       </p>
       <div className="bg-secondary flex flex-col items-center justify-center w-screen mt-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 max-w-6xl 2xl:max-w-7xl">
-          {internships.map((internship, index) => (
+          {jobExperience.map((job, index) => (
             <FadeInOnScroll key={index} delay={index * 0.05}>
               <div className="card bg-base-100 shadow-xl hover:scale-105 transition-transform hover:cursor-pointer hover:shadow-2xl">
                 <figure className="w-full">
                   <img
-                    src={internship.image}
-                    alt={internship.company}
+                    src={job.image}
+                    alt={job.company}
                     className="w-full h-32 object-center object-contain"
                   />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title 2xl:text-2xl">
-                    {internship.position}
+                    {job.position}
                   </h2>
                   <p className="font-semibold text-xl 2xl:text-2xl">
-                    {internship.company}
+                    {job.company}
                   </p>
                   <p className="text-sm text-base-content 2xl:text-md 3xl:!text-lg">
-                    {internship.duration}
+                    {job.duration}
                   </p>
                   <p className="text-justify 2xl:text-lg">
-                    {internship.description}
+                    {job.description}
                   </p>
                   <div className="flex flex-wrap mt-2">
-                    {internship.techs.map((tech, techIndex) => (
+                    {job.techs.map((tech, techIndex) => (
                       <span
                         key={techIndex}
                         className="badge badge-secondary badge-sm lg: badge-md mr-2 mb-2 2xl:badge-lg"
