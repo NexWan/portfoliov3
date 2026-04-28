@@ -9,7 +9,7 @@ function ParticlesComp() {
         autoPlay: true,
         background: {
           color: {
-            value: "#17163e",
+            value: "#16152a",
           },
           image: "",
           position: "",
@@ -144,14 +144,14 @@ function ParticlesComp() {
                     value: "#3b5e98",
                   },
                   stop: {
-                    value: "#17163e",
+                    value: "#16152a",
                   },
                 },
                 radius: 1000,
               },
               shadow: {
                 color: {
-                  value: "#17163e",
+                  value: "#16152a",
                 },
                 length: 2000,
               },
