@@ -612,6 +612,31 @@ h1, h2, h3, h4, h5 {
   line-height: 1.65;
   margin-bottom: 12px;
 }
+.timeline-highlights {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+.timeline-highlights li {
+  position: relative;
+  color: rgba(232, 229, 245, 0.78);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  padding-left: 18px;
+}
+.timeline-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pk);
+  box-shadow: 0 0 12px rgba(255, 110, 180, 0.35);
+}
 
 /* ── Contest cards ─────────────────────────────────────────────────── */
 .contest-card-new {

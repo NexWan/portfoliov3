@@ -15,7 +15,7 @@ export default function Experience() {
           <span className="section-label">Background</span>
           <h2 className="section-heading">Experience</h2>
           <p className="section-sub">
-            My experience is still growing — but I've had the chance to work at
+            My experience is still growing, but I've had the chance to work at
             some great companies and compete in some exciting contests.
           </p>
         </FadeInOnScroll>
@@ -47,6 +47,11 @@ export default function Experience() {
                   <p className="timeline-company">{job.company}</p>
                   <h3 className="timeline-position">{job.position}</h3>
                   <p className="timeline-desc">{job.description}</p>
+                  <ul className="timeline-highlights">
+                    {job.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
                   <div className="flex flex-wrap gap-1.5">
                     {job.techs.map((t) => (
                       <span key={t} className="tag-pill">

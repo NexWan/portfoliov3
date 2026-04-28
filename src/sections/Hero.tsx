@@ -256,7 +256,7 @@ export default function Hero({ scrollTo }: HeroProps) {
 
           <p className="about-glass-copy text-sm lg:text-base mb-3 leading-relaxed">
             One of my favorite movies is{" "}
-            <strong>The Social Network</strong> — it inspired me
+            <strong>The Social Network</strong>. It inspired me
             to pursue a career in technology.
           </p>
 

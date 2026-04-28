@@ -85,7 +85,7 @@ export default function Skills() {
           <p className="section-sub">
             During my time as a student and developer I've learned a wide range
             of technologies. I consider myself a full-stack developer with more
-            depth on the backend side — but always eager to learn and improve.
+            depth on the backend side, but always eager to learn and improve.
           </p>
         </FadeInOnScroll>
       </div>

@@ -89,7 +89,7 @@ export default function Projects() {
             <h2 className="section-heading">Projects I've built</h2>
             <p className="section-sub">
               I've had the opportunity to work on several personal projects. It's
-              something I personally enjoy — it lets me explore new technologies
+              something I personally enjoy, since it lets me explore new technologies
               and keep improving my stack.
             </p>
           </FadeInOnScroll>
