@@ -9,6 +9,14 @@ export interface Contest {
 
 export const contests: Contest[] = [
   {
+    name: "Nasa Space Apps Challenge 2025",
+    position: "Participant",
+    date: "October 2025",
+    description:
+      "Participated in the global NASA Space Apps Challenge, developing a solution for space-related challenges using AI and data analysis.",
+    techs: ["Python", "Data Analysis", "AI Tools"],
+  },
+  {
     name: "Hackatec Regional 2024",
     position: "1st Place",
     date: "March 2024",
