@@ -32,7 +32,7 @@ function ParticlesComp() {
         delay: 0,
         detectRetina: true,
         duration: 0,
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
           detectsOn: "window",
           events: {
@@ -493,7 +493,24 @@ function ParticlesComp() {
         },
         pauseOnBlur: true,
         pauseOnOutsideViewport: true,
-        responsive: [],
+        responsive: [
+          {
+            maxWidth: 1023,
+            options: {
+              fpsLimit: 30,
+              interactivity: {
+                events: {
+                  onHover: { enable: false, mode: "light" },
+                },
+              },
+              particles: {
+                number: { value: 12 },
+                move: { speed: 3 },
+                size: { value: { min: 10, max: 20 } },
+              },
+            },
+          },
+        ],
         smooth: false,
         style: {},
         themes: [],
