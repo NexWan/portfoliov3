@@ -15,8 +15,8 @@ export default function Experience() {
           <span className="section-label">Background</span>
           <h2 className="section-heading">Experience</h2>
           <p className="section-sub">
-            My experience is still growing, but I've had the chance to work at
-            some great companies and compete in some exciting contests.
+            Software Engineer focused on backend systems, infrastructure, and data pipelines.
+            I build and maintain production systems, with a strong interest in AI-assisted and agentic development.
           </p>
         </FadeInOnScroll>
 
