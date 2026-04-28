@@ -81,38 +81,42 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="section">
-      <div className="section-inner">
-        <FadeInOnScroll>
-          <span className="section-label">Work</span>
-          <h2 className="section-heading">Projects I've built</h2>
-          <p className="section-sub">
-            I've had the opportunity to work on several personal projects. It's
-            something I personally enjoy — it lets me explore new technologies
-            and keep improving my stack.
-          </p>
-        </FadeInOnScroll>
+    <section id="projects" className="section projects-section">
+      <div className="section-inner projects-section-inner">
+        <div className="projects-header">
+          <FadeInOnScroll>
+            <span className="section-label">Work</span>
+            <h2 className="section-heading">Projects I've built</h2>
+            <p className="section-sub">
+              I've had the opportunity to work on several personal projects. It's
+              something I personally enjoy — it lets me explore new technologies
+              and keep improving my stack.
+            </p>
+          </FadeInOnScroll>
 
-        <div className="flex flex-wrap gap-2 mb-10">
-          {CATEGORIES.map((c) => (
-            <button
-              key={c}
-              className={`filter-tab${cat === c ? " active" : ""}`}
-              onClick={() => setCat(c)}
-            >
-              {c}
-            </button>
-          ))}
+          <div className="projects-filters flex flex-wrap gap-2 mb-10">
+            {CATEGORIES.map((c) => (
+              <button
+                key={c}
+                className={`filter-tab${cat === c ? " active" : ""}`}
+                onClick={() => setCat(c)}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p, i) => (
-            <ProjectCard
-              key={`${p.title}-${cat}`}
-              project={p as Project}
-              delay={i * 45}
-            />
-          ))}
+        <div className="projects-scroll">
+          <div className="projects-list grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((p, i) => (
+              <ProjectCard
+                key={`${p.title}-${cat}`}
+                project={p as Project}
+                delay={i * 45}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

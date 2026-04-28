@@ -32,10 +32,16 @@ export default function Hero({ scrollTo }: HeroProps) {
   }, []);
   const current = TITLES[index % TITLES.length];
 
+  const handleHeroCta = () => {
+    const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+    scrollTo(isMobile ? "about" : "projects");
+  };
+
   /* ── GSAP entrance ── */
   useLayoutEffect(() => {
     const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
     const margin = em * 2;
+    const isMobile = window.innerWidth < 1024;
     const is3xl = window.innerWidth >= 2560;
 
     const { left } = block.current!.getBoundingClientRect();
@@ -56,9 +62,15 @@ export default function Hero({ scrollTo }: HeroProps) {
 
     const tl = gsap.timeline({ defaults: { duration: 0.8 } });
 
-    tl.from(headline.current, { opacity: 0, yPercent: -50 })
-      .to(block.current, { x: distance, ease: "power2.inOut" })
-      .add(() => {
+    tl.from(headline.current, { opacity: 0, yPercent: -50 });
+
+    if (isMobile) {
+      tl.to(block.current, { y: -36, ease: "power2.inOut" }).to(
+        block.current,
+        { y: -56, ease: "bounce.out" }
+      );
+    } else {
+      tl.to(block.current, { x: distance, ease: "power2.inOut" }).add(() => {
         container.current!.classList.remove("justify-center");
         container.current!.classList.add(
           "justify-start",
@@ -68,9 +80,10 @@ export default function Hero({ scrollTo }: HeroProps) {
           clearProps: "transform",
           marginLeft: !is3xl ? `${margin}px` : "0px",
         });
-      })
-      .to(block.current, { y: -20, ease: "bounce.out" })
-      .from(subline.current, { opacity: 0, y: 20 }, "<0.2")
+      });
+    }
+
+    tl.from(subline.current, { opacity: 0, y: 20 }, "<0.2")
       .from(secondDiv.current, { opacity: 0 }, "<0.1")
       .from(showMore.current, { opacity: 0, y: 45 }, "<0.1");
 
@@ -82,15 +95,14 @@ export default function Hero({ scrollTo }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative w-full grid lg:grid-cols-2 grid-cols-1 min-h-screen overflow-hidden"
+      className="hero-shell relative w-full grid lg:grid-cols-2 grid-cols-1 min-h-screen overflow-hidden"
     >
       <ParticlesComp />
 
       {/* ── LEFT: name + subtitle ─────────────────────────────────── */}
       <div
         ref={container}
-        className="relative flex items-center justify-center overflow-hidden lg:px-20 px-8 py-20 lg:py-0 lg:min-h-screen"
-        style={{ background: "var(--bg)" }}
+        className="hero-intro relative z-10 flex items-center justify-center overflow-hidden lg:px-20 px-8 py-20 lg:py-0"
       >
         {/* blob glows */}
         <div
@@ -137,7 +149,7 @@ export default function Hero({ scrollTo }: HeroProps) {
           style={{ width: 28, height: 28, borderRadius: "50%", border: "3px solid var(--pk)", bottom: "55%", right: "8%" }}
         />
 
-        <div ref={block} className="relative z-10 flex flex-col items-start">
+        <div ref={block} className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left">
           <h1
             ref={headline}
             className="lg:text-7xl text-5xl font-extrabold 3xl:!text-10xl 2xl:text-9xl tracking-tight"
@@ -170,10 +182,11 @@ export default function Hero({ scrollTo }: HeroProps) {
           <button
             ref={showMore}
             className="hero-cta mt-8"
-            onClick={() => scrollTo("projects")}
+            onClick={handleHeroCta}
           >
             See my work
             <svg
+              className="hero-cta-icon"
               width="14"
               height="14"
               viewBox="0 0 24 24"
@@ -191,12 +204,9 @@ export default function Hero({ scrollTo }: HeroProps) {
 
       {/* ── RIGHT: about ──────────────────────────────────────────── */}
       <div
+        id="about"
         ref={secondDiv}
-        className="relative flex flex-col items-center justify-center px-8 lg:px-20 py-20 lg:py-0 overflow-hidden"
-        style={{
-          background: "var(--bg2)",
-          borderLeft: "1px solid var(--border)",
-        }}
+        className="hero-about relative z-10 flex flex-col items-center justify-center px-8 lg:px-20 py-20 lg:py-0 overflow-hidden"
       >
         {/* radial blob backdrop */}
         <div
@@ -218,7 +228,7 @@ export default function Hero({ scrollTo }: HeroProps) {
           style={{ width: 18, height: 18, borderRadius: "50%", background: "var(--ye)", bottom: "20%", right: "5%" }}
         />
 
-        <div className="relative z-10 max-w-md w-full flex flex-col items-center text-center lg:text-left lg:items-start">
+        <div className="about-glass relative z-10 max-w-md w-full flex flex-col items-center text-center lg:text-left lg:items-start">
           <motion.img
             src="/tsuchinoko_dark.png"
             alt="NexWan mascot"
@@ -232,26 +242,25 @@ export default function Hero({ scrollTo }: HeroProps) {
           />
 
           <h3
-            className="text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-5"
-            style={{ color: "var(--pk)" }}
+            className="about-glass-title text-2xl lg:text-3xl 2xl:text-4xl font-bold mb-5"
           >
             Welcome to my portfolio!
           </h3>
 
-          <p className="text-sm lg:text-base mb-3 leading-relaxed" style={{ color: "var(--muted)" }}>
-            <span style={{ color: "var(--text)", fontWeight: 700 }}>Hello! 👋 My name is Leo</span>,
+          <p className="about-glass-copy text-sm lg:text-base mb-3 leading-relaxed">
+            <span>Hello! 👋 My name is Leo</span>,
             and I'm currently a student at the Instituto Tecnológico de Saltillo. I'm passionate
             about everything related to technology, especially software development. I got into
             programming at a young age and have been fascinated by the world of code ever since.
           </p>
 
-          <p className="text-sm lg:text-base mb-3 leading-relaxed" style={{ color: "var(--muted)" }}>
+          <p className="about-glass-copy text-sm lg:text-base mb-3 leading-relaxed">
             One of my favorite movies is{" "}
-            <strong style={{ color: "var(--pk)" }}>The Social Network</strong> — it inspired me
+            <strong>The Social Network</strong> — it inspired me
             to pursue a career in technology.
           </p>
 
-          <p className="text-sm lg:text-base leading-relaxed" style={{ color: "var(--muted)" }}>
+          <p className="about-glass-copy text-sm lg:text-base leading-relaxed">
             In this portfolio you'll find my projects and works. I hope you enjoy exploring them
             as much as I enjoyed creating them! Navigate using the links above, or{" "}
             <a
@@ -260,7 +269,6 @@ export default function Hero({ scrollTo }: HeroProps) {
                 e.preventDefault();
                 scrollTo("projects");
               }}
-              style={{ color: "var(--pk)", textDecoration: "none", fontWeight: 600 }}
             >
               jump straight to my projects →
             </a>
