@@ -1,4 +1,14 @@
-export const jobs = [
+export interface Job {
+    company: string;
+    position: string;
+    duration: string;
+    description: string;
+    image: string;
+    techs: string[];
+    current?: boolean;
+}
+
+export const jobs: Job[] = [
     {
         "company": "Justia",
         "position": "Associate Software Engineer",
@@ -13,7 +23,8 @@ export const jobs = [
             "MySQL",
             "AWS",
             "Linux"
-        ]
+        ],
+        "current": true
     },
     {
         "company": "Softtek",
