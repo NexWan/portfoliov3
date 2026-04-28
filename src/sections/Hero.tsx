@@ -1,7 +1,6 @@
 import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import gsap from "gsap";
 import TextTransition, { presets } from "react-text-transition";
-import { motion } from "framer-motion";
 import ParticlesComp from "../components/ParticlesComp";
 
 const TITLES: { prefix: string; showDev: boolean }[] = [
@@ -220,16 +219,10 @@ export default function Hero({ scrollTo }: HeroProps) {
         />
 
         <div className="about-glass relative z-10 max-w-md w-full flex flex-col items-center text-center lg:text-left lg:items-start">
-          <motion.img
+          <img
             src="/tsuchinoko_dark.png"
             alt="NexWan mascot"
-            className="lg:h-20 lg:w-20 w-16 h-16 mb-3 self-center"
-            animate={{
-              x: [0, -1, 1, -1, 1, 0],
-              y: [0, 1, -1, 1, -1, 0],
-              rotate: [0, 1, -1, 1, -1, 0],
-            }}
-            transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+            className="mascot-wiggle lg:h-20 lg:w-20 w-16 h-16 mb-3 self-center"
           />
 
           <h3
