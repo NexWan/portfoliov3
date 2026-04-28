@@ -39,7 +39,7 @@ export default function Experience() {
           <div className="timeline-new">
             {jobs.map((job, i) => (
               <FadeInOnScroll key={job.company} delay={i * 0.08}>
-                <div className="timeline-item-new">
+                <div className="timeline-item-new mb-4">
                   <div
                     className={`timeline-dot-new${job.current ? " current" : ""}`}
                   />
