@@ -39,56 +39,47 @@ export default function Hero({ scrollTo }: HeroProps) {
 
   /* ── GSAP entrance ── */
   useLayoutEffect(() => {
-    const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const margin = em * 2;
     const isMobile = window.innerWidth < 1024;
     const is3xl = window.innerWidth >= 2560;
+    const containerEl = container.current;
+    const blockEl = block.current;
+    const headlineEl = headline.current;
+    const sublineEl = subline.current;
+    const secondDivEl = secondDiv.current;
+    const showMoreEl = showMore.current;
 
-    const { left } = block.current!.getBoundingClientRect();
-    let targetPosition;
-
-    if (is3xl) {
-      const containerWidth = container.current!.offsetWidth;
-      targetPosition =
-        containerWidth - Math.abs(block.current!.offsetWidth) - margin - left;
-    } else {
-      targetPosition = margin;
+    if (!containerEl || !blockEl || !headlineEl || !sublineEl || !secondDivEl || !showMoreEl) {
+      return;
     }
 
-    const distance = is3xl
-      ? 0
-      : targetPosition -
-        (left - container.current!.getBoundingClientRect().left);
+    const containerRect = containerEl.getBoundingClientRect();
+    const blockRect = blockEl.getBoundingClientRect();
+    const centeredLeft = containerRect.left + (containerRect.width - blockRect.width) / 2;
+    const centeredOffset = isMobile || is3xl ? 0 : centeredLeft - blockRect.left;
 
     const tl = gsap.timeline({ defaults: { duration: 0.8 } });
 
-    tl.from(headline.current, { opacity: 0, yPercent: -50 });
+    tl.set(blockEl, { x: centeredOffset })
+      .from(headlineEl, { opacity: 0, yPercent: -50 });
 
     if (isMobile) {
-      tl.to(block.current, { y: -36, ease: "power2.inOut" }).to(
-        block.current,
+      tl.to(blockEl, { y: -36, ease: "power2.inOut" }).to(
+        blockEl,
         { y: -56, ease: "bounce.out" }
       );
     } else {
-      tl.to(block.current, { x: distance, ease: "power2.inOut" }).add(() => {
-        container.current!.classList.remove("justify-center");
-        container.current!.classList.add(
-          "justify-start",
-          "3xl:!justify-center"
-        );
-        gsap.set(block.current, {
-          clearProps: "transform",
-          marginLeft: !is3xl ? `${margin}px` : "0px",
-        });
-      });
+      tl.to(blockEl, { x: 0, ease: "power2.inOut" });
     }
 
-    tl.from(subline.current, { opacity: 0, y: 20 }, "<0.2")
-      .from(secondDiv.current, { opacity: 0 }, "<0.1")
-      .from(showMore.current, { opacity: 0, y: 45 }, "<0.1");
+    tl.from(sublineEl, { opacity: 0, y: 20 }, "<0.2")
+      .from(secondDivEl, { opacity: 0 }, "<0.1")
+      .from(showMoreEl, { opacity: 0, y: 45 }, "<0.1");
 
     return () => {
       tl.kill();
+      gsap.set([blockEl, headlineEl, sublineEl, secondDivEl, showMoreEl], {
+        clearProps: "all",
+      });
     };
   }, []);
 
@@ -102,7 +93,7 @@ export default function Hero({ scrollTo }: HeroProps) {
       {/* ── LEFT: name + subtitle ─────────────────────────────────── */}
       <div
         ref={container}
-        className="hero-intro relative z-10 flex items-center justify-center overflow-hidden lg:px-20 px-8 py-20 lg:py-0"
+        className="hero-intro relative z-10 flex items-center justify-center lg:justify-start 3xl:!justify-center overflow-hidden lg:px-20 px-8 py-20 lg:py-0"
       >
         {/* blob glows */}
         <div
