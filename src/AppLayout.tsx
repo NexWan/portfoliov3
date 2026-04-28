@@ -8,11 +8,11 @@ function AppLayout() {
   return (
     <>
     <MouseTrail strokeColor={theme === "valentine" ? "#22223b" : "#f0f0f0"} />
-    <div className="flex flex-col h-screen w-screen overflow-auto">
+    <div className="flex min-h-screen w-full flex-col">
       <header className="flex 2xl:max-h-1/3 items-start justify-start bg-neutral text-neutral-content sticky top-0 z-50">
         <Navbar />
       </header>
-      <main className="flex w-full h-max justify-center items-center bg-base-100">
+      <main className="flex w-full flex-1 justify-center items-start bg-base-100">
         <Outlet/>
       </main>
       <FooterComponent />
